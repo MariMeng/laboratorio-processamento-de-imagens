@@ -21,7 +21,7 @@ def coeficiente_uniforme(alpha, matrizA, matrizB):
 
     resultado = imagem_resultado(cruzado_uniforme)
 
-    return imagem_resultado
+    return resultado
 
 def coeficiente_nao_uniforme(matrizA, matrizB):
 
