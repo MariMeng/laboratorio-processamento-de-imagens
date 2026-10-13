@@ -13,9 +13,14 @@ def matriz_image(path, tamanho=None):
     nome = Path(path).stem
     extensao = Path(path).suffix
 
-    caminho_saida = Path("resultados") / f"{nome}_cinza{extensao}"
-    imagem_cinza.save(caminho_saida)
-
     matriz = np.array(imagem_cinza)
 
     return matriz
+
+def imagem_resultado(matriz):
+
+    resultado = np.clip(matriz, 0, 255).astype(np.uint8)
+
+    imagem_resultado = Image.fromarray(resultado, mode="L")
+
+    return imagem_resultado
