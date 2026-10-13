@@ -3,13 +3,6 @@ import numpy as np
 import math
 from image import (matriz_image, imagem_resultado)
 
-path = 'suqui.jpeg'
-
-with Image.open(path) as imagem:
-    tamanho = imagem.size
-
-matriz = matriz_image(path, tamanho)
-
 def negativo(matriz):
 
     imagem_negativa = 255 - matriz
@@ -17,8 +10,6 @@ def negativo(matriz):
     resultado = (imagem_negativa).astype(np.uint8)
 
     imagem_resultado = Image.fromarray(resultado, mode="L")
-
-    imagem_resultado.show()
 
     return imagem_resultado
 
@@ -38,8 +29,6 @@ def alargamento_constraste(matriz):
 
         resultado = imagem_resultado(alarg_contraste)
 
-    resultado.show()
-
     return resultado
 
 
@@ -50,7 +39,7 @@ def limiarizacao(matriz, t):
 
     resultado = imagem_resultado(nova_imagem)
 
-    resultado.show()
+    return resultado
 
 
 def gamma(matriz, y ):
@@ -58,8 +47,6 @@ def gamma(matriz, y ):
     gamma_e = 255 * pow((matriz/255.0),y)
 
     resultado = imagem_resultado(gamma_e)
-
-    resultado.show()
 
     return resultado
 
@@ -71,8 +58,4 @@ def logaritmico(matriz):
 
     resultado = imagem_resultado(logaritmico_e)
 
-    resultado.show()
-
     return resultado
-
-logaritmico(matriz)
