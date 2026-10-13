@@ -3,10 +3,6 @@ from PIL import Image
 import numpy as np
 from image import (matriz_image, imagem_resultado)
 
-path = 'suqui.jpeg'
-
-matriz = matriz_image(path)
-
 def histograma_expansao(matriz):
 
 
@@ -22,7 +18,6 @@ def histograma_expansao(matriz):
 
     resultado = imagem_resultado(matriz_expansao)
 
-    resultado.show()
 
     return resultado
 
@@ -49,9 +44,6 @@ def histograma_equalizacao(matriz):
         soma += frequencia_relativa[i]
         frequencia_acumulada[i] = soma
 
-    print("Total de pixels:", matriz.size)
-    print("Soma das frequências:", sum(pixel))
-    print("Frequência acumulada final:", frequencia_acumulada[-1])
 
     equalizacao = np.round(
         255 * np.array(frequencia_acumulada)
@@ -64,14 +56,10 @@ def histograma_equalizacao(matriz):
     ).astype(np.uint8)
 
     resultado = Image.fromarray(matriz_equalizacao)
-    resultado.show()
 
  
 
     return resultado
-
-histograma_equalizacao(matriz)
-
 
     
 
