@@ -1,7 +1,7 @@
 from PIL import Image
 import numpy as np
 
-from image import (matriz_image)
+from image import (matriz_image, imagem_resultado)
 
 path1 = "suqui.jpeg"
 path2 = "digo.jpeg"
@@ -19,12 +19,9 @@ def coeficiente_uniforme(alpha, matrizA, matrizB):
 
     cruzado_uniforme = (1- alpha) * matrizA  + alpha * matrizB
 
-    print(cruzado_uniforme)
+    resultado = imagem_resultado(cruzado_uniforme)
 
-    resultado = np.clip(cruzado_uniforme, 0, 255).astype(np.uint8)
-
-    imagem_resultado = Image.fromarray(resultado, mode="L")
-    imagem_resultado.show()
+    return imagem_resultado
 
 def coeficiente_nao_uniforme(matrizA, matrizB):
 
@@ -39,12 +36,6 @@ def coeficiente_nao_uniforme(matrizA, matrizB):
 
     cruzado_nao_uniforme = (1 - alpha) * matrizA + alpha * matrizB
 
-    print(cruzado_nao_uniforme)
+    resultado = imagem_resultado(cruzado_nao_uniforme)
 
-    resultado = np.clip(cruzado_nao_uniforme,0,255).astype(np.uint8)
-
-    imagem_resultado = Image.fromarray(resultado, mode="L")
-    imagem_resultado.show()
-
-coeficiente_nao_uniforme(matrizA, matrizB)
-coeficiente_uniforme(0.5, matrizA, matrizB)
+    return resultado
