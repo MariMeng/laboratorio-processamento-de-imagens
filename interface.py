@@ -246,7 +246,7 @@ class Laboratory(tk.Tk):
         self.selected_result = ttk.Combobox(bottom, state='readonly', width=39, style='PDI.TCombobox')
         self.selected_result.pack(side='left')
         self.selected_result.bind('<<ComboboxSelected>>', lambda _: self.update_previews())
-        self._label(bottom, 'As respostas intermediárias ficam neste menu.', 9, _MUTED).pack(side='right')
+        self._label(bottom, '', 9, _MUTED).pack(side='right')
         self.bind('<Configure>', self._resize_debounced)
         self._resize_after = None
 
@@ -257,7 +257,6 @@ class Laboratory(tk.Tk):
         self.sidebar_canvas.itemconfigure(self.sidebar_window, width=event.width)
 
     def _scroll_sidebar(self, event):
-        # Só rola se o ponteiro estiver dentro do painel lateral.
         px, py = self.winfo_pointerxy()
         sx, sy = self.sidebar_canvas.winfo_rootx(), self.sidebar_canvas.winfo_rooty()
         if not (sx <= px < sx + self.sidebar_canvas.winfo_width()
@@ -388,7 +387,7 @@ class Laboratory(tk.Tk):
                     labels = [name for name, _ in data]
                     self.selected_result.configure(values=labels)
                     self.selected_result.current(0)
-                    self.status.configure(text=f'{op} · {len(data)} resultado(s)')
+                    self.status.configure(text=f'{op} - {len(data)} resultado(s)')
                     self.update_previews()
         except queue.Empty:
             pass
